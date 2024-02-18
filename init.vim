@@ -31,6 +31,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sainnhe/edge'
 
+"Vim indent guide
+Plug 'nathanaelkane/vim-indent-guides'
+
 "Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -73,6 +76,11 @@ let g:airline#extensions#coc#enabled = 1
 "옵션 설정
 let g:airline#extensions#coc#show_coc_status = 1
 
+"vim indent guide
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+
 "vim-commentary manual
 "gcc : 현재 라인 주석 처리
 "gcap: 현재 문단 주석 처리
@@ -94,16 +102,16 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 
 "Coc 자동완성
 "Control+j,k로 자동완성 리스트 이동
-inoremap <silent><expr> <C-j> coc#pum#visible() ? coc#pum#next(1) : "\<C-j>"
-inoremap <silent><expr> <C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-k>"
+inoremap <silent><expr> <C-j> coc#pum#visible() ? coc#pum#next(1) : "" 
+inoremap <silent><expr> <C-k> coc#pum#visible() ? coc#pum#prev(1) : ""
 "Control+h로 자동완성 선택
-inoremap <silent><expr> <C-h> coc#pum#visible() ? coc#pum#confirm(1) : "\<C-h>"
+inoremap <silent><expr> <C-h> coc#pum#visible() ? coc#pum#insert() : ""
 
 "nvim-treesitter 설정
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" 
-  ensure_installed = { "c", "cpp", "python", "rust" },
+  ensure_installed = { "c", "cpp", "python", "rust", "lua", "json", "vim", "bash" },
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
 
