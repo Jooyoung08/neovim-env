@@ -112,7 +112,7 @@ inoremap <silent><expr> <C-l> coc#pum#visible() ? coc#refresh() : coc#start()
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" 
-  ensure_installed = { "c", "cpp", "python", "rust", "lua", "json", "vim", "bash" },
+  ensure_installed = { "c", "cmake", "cpp", "python", "rust", "lua", "json", "vim", "bash" },
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
 
