@@ -106,6 +106,7 @@ inoremap <silent><expr> <C-j> coc#pum#visible() ? coc#pum#next(1) : ""
 inoremap <silent><expr> <C-k> coc#pum#visible() ? coc#pum#prev(1) : ""
 "Control+h로 자동완성 선택
 inoremap <silent><expr> <C-h> coc#pum#visible() ? coc#pum#insert() : ""
+inoremap <silent><expr> <C-l> coc#pum#visible() ? coc#refresh() : coc#start() 
 
 "nvim-treesitter 설정
 lua <<EOF
