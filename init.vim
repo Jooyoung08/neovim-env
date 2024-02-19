@@ -101,6 +101,8 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ }
 
 "Coc 자동완성
+"Extension 확인 및 자동 설치
+let g:coc_global_extensions = ['coc-json', 'coc-rust-analyzer', 'coc-pyright', 'coc-clangd', 'coc-marketplace']
 "Control+j,k로 자동완성 리스트 이동
 inoremap <silent><expr> <C-j> coc#pum#visible() ? coc#pum#next(1) : "" 
 inoremap <silent><expr> <C-k> coc#pum#visible() ? coc#pum#prev(1) : ""
@@ -112,7 +114,7 @@ inoremap <silent><expr> <C-l> coc#pum#visible() ? coc#refresh() : coc#start()
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" 
-  ensure_installed = { "c", "cmake", "cpp", "python", "rust", "lua", "json", "vim", "bash" },
+  ensure_installed = { "c", "cmake", "cpp", "python", "lua", "json", "vim", "bash" },
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
 
