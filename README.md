@@ -28,6 +28,18 @@ brew install neovim
 ~/.config/nvim/init.nvim
 ```
 
+또는 해당 파일을 심볼릭 링크로 연결한다.
+
+```
+ln -s init.nvim ~/.config/nvim/init.nvim
+```
+
+해당 디렉토리가 없는 경우 생성후 위 명령어를 실행한다.
+
+```
+mkdir ~/.config/nvim
+```
+
 ## 사용
 
 터미널을 열고, 다음의 명령어를 실행한다.
