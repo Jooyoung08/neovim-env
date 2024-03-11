@@ -25,13 +25,13 @@ brew install neovim
 네오빔의 설정파일은 아래 경로에 다음과 같이 저장한다.
 
 ```
-~/.config/nvim/init.nvim
+~/.config/nvim/init.vim
 ```
 
 또는 해당 파일을 심볼릭 링크로 연결한다.
 
 ```
-ln -s init.nvim ~/.config/nvim/init.nvim
+ln -s init.nvim ~/.config/nvim/init.vim
 ```
 
 해당 디렉토리가 없는 경우 생성후 위 명령어를 실행한다.
@@ -97,7 +97,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 ### 플러그인 추가
 
-플러그인은 **init.nvim** 파일에서 추가할 수 있다.
+플러그인은 **init.vim** 파일에서 추가할 수 있다.
 
 추가 방법은 간략히 다음과 같다.
 
