@@ -94,6 +94,34 @@ nvim을 열고, 다음의 명령어를 실행한다.
 :PlugInstall
 ```
 
+### vim-plug 장소
+
+Rocky Linux의 경우 아래 경로에 Plug 들이 설치된다.
+
+```
+cd
+ls .local/share/nvim/plugged
+```
+
+### 특정 plug 삭제
+
+특정한 플러그를 삭제하고 싶을때는 다음과 같은 과정을 거친다.
+
+#### Plug 삭제
+
+```
+cd ~/.local/share/nvim/plugged
+rm -rf 삭제하려는플러그
+```
+
+#### init.vim
+
+삭제 하려는 플러그를 주석처리 하거나 지운다.
+
+```
+#Plug '삭제하려는플러그'
+```
+
 ### vim-plug 명령어
 
 2024.03 현재
