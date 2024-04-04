@@ -4,20 +4,18 @@
 
 Rocky Linux 9
 
-Mac
-
 ## 설치
 
-### Rocky Linux
+### 사전 설치
+
+```
+sudo dnf install git nodejs
+```
+
+### Neovim 설치
 
 ```
 sudo dnf install neovim
-```
-
-### Mac
-
-```
-brew install neovim
 ```
 
 ## 설정 파일
@@ -50,28 +48,9 @@ nvim
 
 **vi**로 실행하기 위해서는 다음과 같이 설정한다.
 
-### Rocky Linux
-
-설정 파일을 열고
-
 ```
 cd
 vi ~/.bashrc
-```
-
-다음 줄을 추가한다.
-
-```
-alias vi='nvim'
-```
-
-### Mac
-
-설정 파일을 열고
-
-```
-cd
-vi ~/.zshrc
 ```
 
 다음 줄을 추가한다.
@@ -86,9 +65,11 @@ alias vi='nvim'
 
 neovim 에서도 vim-plug를 설치하여 확장기능을 사용할 수 있다.
 
+아래 깃허브 저장소를 참고
+
 [vim-plug github 저장소](https://github.com/junegunn/vim-plug)
 
-### vim-plug 설치
+### vim-plug 설치 (for Neovim)
 
 ```
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
@@ -126,3 +107,20 @@ nvim을 열고, 다음의 명령어를 실행한다.
 | PlugStatus	| Check the status of plugins |
 | PlugDiff	| Examine changes from the previous update and the pending changes |
 | PlugSnapshot[!] [output path]	| Generate script for restoring the current snapshot of the plugins |
+
+---
+
+## CoC for autocompletion
+
+[CoC github 저장소](https://github.com/neoclide/coc.nvim)
+
+### Plugin
+
+```
+" Use release branch (recommended)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Or build from source code by using npm
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'}
+```
+
