@@ -29,7 +29,7 @@ sudo dnf install neovim
 또는 해당 파일을 심볼릭 링크로 연결한다.
 
 ```
-ln -s init.nvim ~/.config/nvim/init.vim
+ln -s init.vim ~/.config/nvim/init.vim
 ```
 
 해당 디렉토리가 없는 경우 생성후 위 명령어를 실행한다.
