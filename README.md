@@ -26,10 +26,10 @@ sudo dnf install neovim
 ~/.config/nvim/init.vim
 ```
 
-또는 해당 파일을 심볼릭 링크로 연결한다.
+또는 다운로드 받은 해당 파일을 심볼릭 링크로 연결한다.
 
 ```
-ln -s init.vim ~/.config/nvim/init.vim
+ln -s /PATH/TO/init.vim ~/.config/nvim/init.vim
 ```
 
 해당 디렉토리가 없는 경우 생성후 위 명령어를 실행한다.
@@ -46,7 +46,7 @@ mkdir ~/.config/nvim
 nvim
 ```
 
-**vi**로 실행하기 위해서는 다음과 같이 설정한다.
+Neovim을 **vi**로 실행하기 위해서는 다음과 같이 설정한다.
 
 ```
 cd
