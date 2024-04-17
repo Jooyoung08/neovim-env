@@ -155,7 +155,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'}
 
 ROOT autocompletion을 직접 지원하는 플러그인은 없기 때문에 다음과 같은 방법을 사용하였다.
 
-우선 ROOT의 include 파일을 찾는다.
+우선 ROOT의 include 디렉토리를 찾는다.
 
 ROOT의 설치 방법에 따라 위치가 다르므로 확인이 필요하다.
 
