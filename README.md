@@ -139,9 +139,25 @@ rm -rf 삭제하려는플러그
 
 ## CoC for autocompletion
 
+기존 vim에서 코드 자동완성 기능을 사용하기 위해 [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe) 플러그인을 사용하였다.
+
+해당 플러그인의 성능이 나쁘지는 않지만, LSP를 지원하는 CoC 플러그인을 사용하기로 결정하였다.
+
+### LSP (Language Server Protocol)
+
+편집기(editor) 또는 IDE(Integrated Development Environment)에서 코드 자동완성, 오류검사, 정의로 이동 등의 기능을 제공하는데, 기존에는 개발 도구의 종류와 언어에 따라 별도의 프로그램을 구현해야 했다. 이에 개발 도구와 언어 서버와의 통신을 표준화하여 "다양한 도구에 언어 기능을 노출하는 데 유용한 프레임워크를 제공" 하기 위해 LSP가 등장하였다.[^lsp]
+
+[^lsp]: https://learn.microsoft.com/ko-kr/visualstudio/extensibility/language-server-protocol?view=vs-2022
+
+### CoC (Conquer of Completion)
+
 [CoC github 저장소](https://github.com/neoclide/coc.nvim)
 
-### Plugin
+### Plugin 설치
+
+Vim-plug로 간단하게 설치할 수 있다.
+
+init.vim 파일에 다음과 같이 추가한다.
 
 ```
 " Use release branch (recommended)
@@ -150,34 +166,36 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Or build from source code by using npm
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'}
 ```
-### ROOT autocompletion
 
-ROOT autocompletion을 직접 지원하는 플러그인은 없기 때문에 다음과 같은 방법을 사용하였다.
+### ROOT 자동완성
+
+[ROOT: analyzing petabytes of data, scientifically](https://root.cern/)
+
+ROOT 자동완성을 직접 지원하는 플러그인은 없기 때문에 다음과 같은 방법을 사용하였다.
 
 우선 ROOT의 include 디렉토리를 찾는다.
 
-ROOT의 설치 방법에 따라 위치가 다르므로 확인이 필요하다.
+(ROOT의 설치 방법에 따라 위치가 다르므로 확인이 필요하다.)
 
 다만 헤더파일 중 하나를 검색하여 해당 경로를 찾을 수 있다.
 
+(locate 명령어를 사용하기 위해서는 mlocate 패키지가 설치되어 있어야 한다.)
+
 ```
 updatedb
+
 locate TFile.h
-```
 
-locate 명령어를 사용하기 위해서는 mlocate 패키지가 설치되어 있어야 한다.
-
-```
 cd /PATH/TO/ROOT/include
 ```
 
-include 디렉토리 하위 파일들을 CoC 관련 디렉토리로 복사한다.
+CoC 관련 디렉토리의 경로를 확인하고
+
+include 디렉토리 하위 파일들을 해당 디렉토리로 복사한다.
 
 ```
 cp -r /PATH/TO/ROOT/include/* ~/.config/coc/extensions/coc-clangd-data/install/17.0.3/clangd_17.0.3/lib/clang/17/include/
 ```
-
-위 경로는 환경에 따라 다를 수 있으므로 확인 후 복사한다.
 
 ---
 
