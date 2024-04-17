@@ -151,4 +151,34 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Or build from source code by using npm
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'}
 ```
+### ROOT autocompletion
 
+ROOT autocompletion을 직접 지원하는 플러그인은 없기 때문에 다음과 같은 방법을 사용하였다.
+
+우선 ROOT의 include 파일을 찾는다.
+
+ROOT의 설치 방법에 따라 위치가 다르므로 확인이 필요하다.
+
+다만 헤더파일 중 하나를 검색하여 해당 경로를 찾을 수 있다.
+
+```
+cd
+updatedb
+locate TFile.h
+```
+
+locate 명령어를 사용하기 위해서는 mlocate 패키지가 설치되어 있어야 한다.
+
+```
+cd /PATH/TO/ROOT/include
+```
+
+include 디렉토리 하위 파일들을 CoC 관련 디렉토리로 복사한다.
+
+```
+cp -r /PATH/TO/ROOT/include/* ~/.config/coc/extensions/coc-clangd-data/install/17.0.3/clangd_17.0.3/lib/clang/17/include/
+```
+
+위 경로는 환경에 따라 다를 수 있으므로 확인 후 복사한다.
+
+---
