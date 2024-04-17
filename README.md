@@ -99,7 +99,6 @@ nvim을 열고, 다음의 명령어를 실행한다.
 Rocky Linux의 경우 아래 경로에 Plug 들이 설치된다.
 
 ```
-cd
 ls .local/share/nvim/plugged
 ```
 
@@ -162,7 +161,6 @@ ROOT의 설치 방법에 따라 위치가 다르므로 확인이 필요하다.
 다만 헤더파일 중 하나를 검색하여 해당 경로를 찾을 수 있다.
 
 ```
-cd
 updatedb
 locate TFile.h
 ```
@@ -182,3 +180,46 @@ cp -r /PATH/TO/ROOT/include/* ~/.config/coc/extensions/coc-clangd-data/install/1
 위 경로는 환경에 따라 다를 수 있으므로 확인 후 복사한다.
 
 ---
+
+## GitHub Copilot
+
+[GitHub Copilot](https://copilot.github.com/)
+
+GitHub Copilot을 neovim에서도 사용할 수 있다.
+
+이를 위해 다음과 같이 설정한다.
+
+### 전제 조건
+
+1. GitHub Copilot Individual 이상의 서비스 구독.
+2. Vim/Neovim 9.0.0185/0.6 이상의 버전.
+3. Node.js 18 이상의 버전.
+
+### 설정
+
+Terminal을 열고 다음의 명령어를 실행한다.
+
+```
+git clone https://github.com/github/copilot.vim \
+   ~/.config/nvim/pack/github/start/copilot.vim
+```
+
+다음으로 nvim을 열고, 다음의 명령어를 실행한다.
+
+```
+:Copilot setup
+```
+
+이를 실행하면 8자리의 코드가 생성되는데, 이를 복사하고 enter를 누른다.
+
+자동으로 웹브라우저가 열리면서 GitHub Copilot의 인증 페이지가 열린다.
+
+복사한 8자리 코드를 입력하고, 인증을 완료한다.
+
+이후 다시 nvim을 열고, 다음의 명령어를 실행한다.
+
+```
+:Copilot enable
+```
+
+이제 GitHub Copilot을 사용할 수 있다.
