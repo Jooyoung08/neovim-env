@@ -145,9 +145,7 @@ rm -rf 삭제하려는플러그
 
 ### LSP (Language Server Protocol)
 
-편집기(editor) 또는 IDE(Integrated Development Environment)에서 코드 자동완성, 오류검사, 정의로 이동 등의 기능을 제공하는데, 기존에는 개발 도구의 종류와 언어에 따라 별도의 프로그램을 구현해야 했다. 이에 개발 도구와 언어 서버와의 통신을 표준화하여 "다양한 도구에 언어 기능을 노출하는 데 유용한 프레임워크를 제공" 하기 위해 LSP가 등장하였다.[^lsp]
-
-[^lsp]: https://learn.microsoft.com/ko-kr/visualstudio/extensibility/language-server-protocol?view=vs-2022
+편집기(editor) 또는 IDE(Integrated Development Environment)에서 코드 자동완성, 오류검사, 정의로 이동 등의 기능을 제공하는데, 기존에는 개발 도구의 종류와 언어에 따라 별도의 프로그램을 구현해야 했다. 이에 개발 도구와 언어 서버와의 통신을 표준화하여 "다양한 도구에 언어 기능을 노출하는 데 유용한 프레임워크를 제공" 하기 위해 [LSP](https://learn.microsoft.com/ko-kr/visualstudio/extensibility/language-server-protocol?view=vs-2022)가 등장하였다.
 
 ### CoC (Conquer of Completion)
 
