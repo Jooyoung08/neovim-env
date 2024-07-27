@@ -159,9 +159,28 @@ init.vim 파일에 다음과 같이 추가한다.
 ```
 " Use release branch (recommended)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+```
 
-" Or build from source code by using npm
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'}
+nvim을 열고
+```
+:PlugInstall
+```
+
+#### Example
+
+##### C++ 자동완성
+
+nvim을 열고
+
+```
+:CocInstall coc-clangd
+```
+
+coc-clangd가 clangd의 서버를 찾지 못하면
+nvim을 실행하여 다음과 같이 해당 서버를 설치한다.
+
+```
+:CocCommand clangd.install
 ```
 
 #### ROOT 자동완성
