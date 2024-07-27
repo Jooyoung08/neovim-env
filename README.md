@@ -15,7 +15,15 @@ sudo dnf install git nodejs
 ### Neovim 설치
 
 ```
-sudo dnf install neovim
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+sudo rm -rf /opt/nvim
+sudo tar -C /opt -xzf nvim-linux64.tar.gz
+```
+
+.bashrc 파일에 다음을 추가한다.
+
+```
+export PATH="$PATH:/opt/nvim-linux64/bin"
 ```
 
 ## 설정 파일
@@ -23,19 +31,8 @@ sudo dnf install neovim
 네오빔의 설정파일은 아래 경로에 다음과 같이 저장한다.
 
 ```
-~/.config/nvim/init.vim
-```
-
-또는 다운로드 받은 해당 파일을 심볼릭 링크로 연결한다.
-
-```
-ln -s /PATH/TO/init.vim ~/.config/nvim/init.vim
-```
-
-해당 디렉토리가 없는 경우 생성후 위 명령어를 실행한다.
-
-```
 mkdir ~/.config/nvim
+~/.config/nvim/init.vim
 ```
 
 ## 사용
@@ -61,7 +58,9 @@ alias vi='nvim'
 
 ---
 
-## 플러그인 vim-plug
+## NeoVIM 추가 기능
+
+### 플러그인 vim-plug
 
 neovim 에서도 vim-plug를 설치하여 확장기능을 사용할 수 있다.
 
@@ -69,24 +68,28 @@ neovim 에서도 vim-plug를 설치하여 확장기능을 사용할 수 있다.
 
 [vim-plug github 저장소](https://github.com/junegunn/vim-plug)
 
-### vim-plug 설치 (for Neovim)
+#### vim-plug 설치 (for Neovim)
 
 ```
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
 
-### 플러그인 추가
+#### 플러그인 추가
 
 플러그인은 **init.vim** 파일에서 추가할 수 있다.
 
 추가 방법은 간략히 다음과 같다.
 
 ```
+call plug#begin(stdpath('data') . '/plugged')
+
 Plug '플러그인 저장소'
+
+call plug#end()
 ```
 
-### 플러그인 설치
+#### 플러그인 설치
 
 nvim을 열고, 다음의 명령어를 실행한다.
 
@@ -94,7 +97,7 @@ nvim을 열고, 다음의 명령어를 실행한다.
 :PlugInstall
 ```
 
-### vim-plug 장소
+#### vim-plug 장소
 
 Rocky Linux의 경우 아래 경로에 Plug 들이 설치된다.
 
@@ -102,26 +105,22 @@ Rocky Linux의 경우 아래 경로에 Plug 들이 설치된다.
 ls .local/share/nvim/plugged
 ```
 
-### 특정 plug 삭제
+#### Plug 삭제
 
 특정한 플러그를 삭제하고 싶을때는 다음과 같은 과정을 거친다.
-
-#### Plug 삭제
 
 ```
 cd ~/.local/share/nvim/plugged
 rm -rf 삭제하려는플러그
 ```
 
-#### init.vim
-
-삭제 하려는 플러그를 주석처리 하거나 지운다.
+init.vim 파일에서 삭제 하려는 플러그를 주석처리 하거나 지운다.
 
 ```
 #Plug '삭제하려는플러그'
 ```
 
-### vim-plug 명령어
+#### vim-plug 명령어
 
 2024.03 현재
 
@@ -137,21 +136,21 @@ rm -rf 삭제하려는플러그
 
 ---
 
-## CoC for autocompletion
+### CoC for autocompletion
 
 기존 vim에서 코드 자동완성 기능을 사용하기 위해 [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe) 플러그인을 사용하였다.
 
 해당 플러그인의 성능이 나쁘지는 않지만, LSP를 지원하는 CoC 플러그인을 사용하기로 결정하였다.
 
-### LSP (Language Server Protocol)
+#### LSP (Language Server Protocol)
 
 편집기(editor) 또는 IDE(Integrated Development Environment)에서 코드 자동완성, 오류검사, 정의로 이동 등의 기능을 제공하는데, 기존에는 개발 도구의 종류와 언어에 따라 별도의 프로그램을 구현해야 했다. 이에 개발 도구와 언어 서버와의 통신을 표준화하여 "다양한 도구에 언어 기능을 노출하는 데 유용한 프레임워크를 제공" 하기 위해 [LSP](https://learn.microsoft.com/ko-kr/visualstudio/extensibility/language-server-protocol?view=vs-2022)가 등장하였다.
 
-### CoC (Conquer of Completion)
+#### CoC (Conquer of Completion)
 
 [CoC github 저장소](https://github.com/neoclide/coc.nvim)
 
-### Plugin 설치
+#### Plugin 설치
 
 Vim-plug로 간단하게 설치할 수 있다.
 
@@ -165,7 +164,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'}
 ```
 
-### ROOT 자동완성
+#### ROOT 자동완성
 
 [ROOT: analyzing petabytes of data, scientifically](https://root.cern/)
 
@@ -197,7 +196,7 @@ cp -r /PATH/TO/ROOT/include/* ~/.config/coc/extensions/coc-clangd-data/install/1
 
 ---
 
-## GitHub Copilot
+### GitHub Copilot
 
 [GitHub Copilot](https://copilot.github.com/)
 
@@ -205,13 +204,13 @@ GitHub Copilot을 neovim에서도 사용할 수 있다.
 
 이를 위해 다음과 같이 설정한다.
 
-### 전제 조건
+#### 전제 조건
 
 1. GitHub Copilot Individual 이상의 서비스 구독.
 2. Vim/Neovim 9.0.0185/0.6 이상의 버전.
 3. Node.js 18 이상의 버전.
 
-### 설정
+#### 설정
 
 Terminal을 열고 다음의 명령어를 실행한다.
 
