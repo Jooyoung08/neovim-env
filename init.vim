@@ -86,7 +86,11 @@ let g:indent_guides_guide_size=1
 "gcap: 현재 문단 주석 처리
 
 "NERDTree
+"NERDTree Open
 nnoremap <C-n> :NERDTreeToggle<CR>			"너드트리토글 단축키
+"NERDTree Find
+nnoremap <C-f> :NERDTreeFind<CR>
+"NERDTree Mapping
 let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Modified'  :'✹',
                 \ 'Staged'    :'✚',
